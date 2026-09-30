@@ -1,0 +1,66 @@
+.order {
+  width: 380px;
+  flex-shrink: 0;
+  padding: var(--space-5);
+  background: var(--surface);
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.order__head { display: flex; justify-content: space-between; align-items: center; }
+.order__head h2 { margin: 0; font-size: 22px; }
+
+.toggle { display: flex; gap: 4px; }
+.toggle button {
+  height: 36px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+}
+.toggle button[aria-pressed='true'] { background: var(--accent-soft); color: var(--accent-strong); font-weight: 700; }
+
+.lines { flex: 1; min-height: 0; overflow-y: auto; }
+.lines__empty { text-align: center; color: var(--faint); margin-top: 40%; }
+
+.line { display: flex; align-items: center; gap: 10px; padding: var(--space-2) 0; border-bottom: 1px solid var(--line-soft); }
+.line__info { flex: 1; min-width: 0; }
+.line__name { font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.line__size {
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.line__unit { font-size: 13px; color: var(--faint); }
+.line__total { width: 56px; font-variant-numeric: tabular-nums; text-align: right; font-weight: 700; }
+
+.qty { display: flex; align-items: center; gap: 6px; }
+.qty button {
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #faf6f0;
+  font-size: 20px;
+}
+.qty span { width: 22px; text-align: center; font-weight: 700; }
+
+.totals { border-top: 1px solid var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 4px; }
+.totals__row { display: flex; justify-content: space-between; color: var(--muted); font-size: 14px; }
+.totals__grand { display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px; font-size: 18px; font-weight: 700; }
+.totals__grand strong { font-size: 30px; font-variant-numeric: tabular-nums; }
+
+.pay { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pay button { height: 60px; border-radius: var(--radius-md); font-size: 18px; font-weight: 700; }
+.pay__cash { border: 1px solid var(--ink); background: var(--surface); }
+.pay__card { border: none; background: var(--accent); color: #fff; }
+
+.order__clear { width: 100%; height: var(--tap); border: none; background: transparent; color: var(--accent); font-weight: 500; }

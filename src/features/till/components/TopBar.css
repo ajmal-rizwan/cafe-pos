@@ -1,0 +1,18 @@
+.topbar {
+  height: 64px;
+  padding: 0 var(--space-6);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--ink);
+  color: var(--ground);
+}
+.topbar__brand { display: flex; align-items: baseline; gap: 14px; }
+.topbar__name { font-size: 22px; font-weight: 700; }
+.topbar__muted { color: var(--on-dark-muted); font-size: 14px; }
+.topbar__right { display: flex; align-items: center; gap: var(--space-4); }
+
+.status { padding: 6px 12px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; }
+.status--on { background: var(--ok-bg); color: var(--ok-fg); }
+.status--off { background: var(--warn-bg); color: var(--warn-fg); }

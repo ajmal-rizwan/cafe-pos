@@ -1,0 +1,33 @@
+/* Design tokens: change the look of the whole app from here. */
+:root {
+  --ground: #f6f1ea;
+  --surface: #ffffff;
+  --ink: #2a2420;
+  --muted: #5e534b;
+  --faint: #6e6259;
+  --line: #e2d8cb;
+  --line-soft: #f0e9e0;
+  --accent: #7a3e20;
+  --accent-strong: #5c2d16;
+  --accent-soft: #f1e6d8;
+  --on-dark-muted: #cfc4b6;
+  --ok-bg: #2f4a33;
+  --ok-fg: #d7f0d9;
+  --warn-bg: #6b3a1f;
+  --warn-fg: #ffe2cc;
+
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --tap: 44px; /* minimum touch target */
+
+  --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
