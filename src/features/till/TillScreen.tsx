@@ -9,7 +9,7 @@ import { useTillStats } from './hooks/useTillStats'
 import { recordSale } from './services/recordSale'
 import './TillScreen.css'
 
-export function TillScreen() {
+export function TillScreen({ onOpenReports }: { onOpenReports: () => void }) {
   const cart = useCart()
   const { nextNumber, todaysTotal } = useTillStats()
   const toast = useToast()
@@ -22,7 +22,7 @@ export function TillScreen() {
 
   return (
     <div className="till">
-      <TopBar todaysTotal={todaysTotal} />
+      <TopBar todaysTotal={todaysTotal} onOpenReports={onOpenReports} />
       <div className="till__body">
         <MenuGrid onAdd={cart.add} />
         <OrderPanel cart={cart} orderNumber={nextNumber} onPayCash={payCash} />

@@ -21,3 +21,6 @@ button {
 button:disabled { opacity: 0.45; cursor: default; }
 
 button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.screen { height: 100%; }
+.screen[hidden] { display: none; }

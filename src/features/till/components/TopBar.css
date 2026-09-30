@@ -16,3 +16,13 @@
 .status { padding: 6px 12px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; }
 .status--on { background: var(--ok-bg); color: var(--ok-fg); }
 .status--off { background: var(--warn-bg); color: var(--warn-fg); }
+
+.topbar__btn {
+  height: var(--tap);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid #5a4e46;
+  background: transparent;
+  color: var(--ground);
+  font-weight: 600;
+}
