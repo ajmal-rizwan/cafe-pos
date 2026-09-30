@@ -43,5 +43,7 @@ export interface Order {
   lines: OrderLine[]
   total: Minor
   payment: PaymentMethod
+  cashTendered?: Minor // what the customer handed over (cash only)
+  change?: Minor // what was given back
   synced: 0 | 1 // 0 until the backend has it (IndexedDB can't index booleans)
 }

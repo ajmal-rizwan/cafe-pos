@@ -5,7 +5,7 @@ import { formatAmount } from '../../../shared/lib/money'
 // One row per line item, so it opens cleanly in Excel or Google Sheets.
 // Also the till's backup until there's a server: export it regularly.
 export function ordersToCsv(orders: Order[]): string {
-  const header = ['order_no', 'date', 'time', 'mode', 'payment', 'code', 'item', 'size', 'qty', 'unit_price', 'line_total', 'order_total']
+  const header = ['order_no', 'date', 'time', 'mode', 'payment', 'code', 'item', 'size', 'qty', 'unit_price', 'line_total', 'order_total', 'cash_given', 'change']
   const rows = orders.flatMap((o) => {
     const d = new Date(o.createdAt)
     const date = d.toLocaleDateString('en-GB')
@@ -23,6 +23,8 @@ export function ordersToCsv(orders: Order[]): string {
       formatAmount(l.unitPrice),
       formatAmount(l.unitPrice * l.qty),
       formatAmount(o.total),
+      o.cashTendered !== undefined ? formatAmount(o.cashTendered) : '',
+      o.change !== undefined ? formatAmount(o.change) : '',
     ])
   })
   return [header, ...rows].map((r) => r.map(csvCell).join(',')).join('\r\n')

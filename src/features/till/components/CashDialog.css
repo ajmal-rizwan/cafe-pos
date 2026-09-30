@@ -1,0 +1,67 @@
+.cash__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgb(42 36 32 / 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 10;
+}
+
+.cash {
+  width: min(780px, calc(100vw - 32px));
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.cash__summary { display: flex; flex-direction: column; gap: var(--space-3); }
+.cash__summary h3 { margin: 0 0 var(--space-2); font-size: 22px; }
+
+.cash__row { display: flex; justify-content: space-between; align-items: baseline; font-size: 17px; color: var(--muted); }
+.cash__row strong { color: var(--ink); font-size: 22px; font-variant-numeric: tabular-nums; }
+
+.cash__change {
+  margin-top: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--ok-bg);
+  color: var(--ok-fg);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.cash__change span { font-weight: 600; }
+.cash__change strong { font-size: 34px; font-variant-numeric: tabular-nums; }
+.cash__change--due { background: var(--accent-soft); color: var(--accent-strong); }
+
+.cash__quick { margin-top: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+.cash__quick button {
+  height: 56px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--ground);
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.cash__side { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.cash__keypad { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+.cash__keypad button {
+  height: 64px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 24px;
+  font-weight: 600;
+}
+.cash__keypad button:active, .cash__quick button:active { background: var(--accent-soft); }
+
+.cash__actions { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-2); }
+.cash__actions button { height: 60px; border-radius: var(--radius-md); font-size: 17px; font-weight: 700; }
+.cash__cancel { border: 1px solid var(--line); background: transparent; color: var(--accent); }
+.cash__confirm { border: none; background: var(--ink); color: var(--ground); }
