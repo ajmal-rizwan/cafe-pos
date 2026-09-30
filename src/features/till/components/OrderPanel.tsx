@@ -1,15 +1,23 @@
 import { config } from '../../../config'
-import { formatAmount, formatMoney, vatFromGross } from '../../../shared/lib/money'
+import { formatAmount, formatMoney, vatFromGross, type Minor } from '../../../shared/lib/money'
 import type { Cart } from '../hooks/useCart'
 import './OrderPanel.css'
+
+export interface PaidSale {
+  number: number
+  total: Minor
+  tendered: Minor
+  change: Minor
+}
 
 interface Props {
   cart: Cart
   orderNumber: number
   onPayCash: () => void
+  lastSale: PaidSale | null // shown until the next item is added
 }
 
-export function OrderPanel({ cart, orderNumber, onPayCash }: Props) {
+export function OrderPanel({ cart, orderNumber, onPayCash, lastSale }: Props) {
   const empty = cart.lines.length === 0
 
   return (
@@ -27,7 +35,17 @@ export function OrderPanel({ cart, orderNumber, onPayCash }: Props) {
       </div>
 
       <div className="lines">
-        {empty && <p className="lines__empty">No items yet</p>}
+        {empty && lastSale && (
+          <div className="paid" role="status">
+            <span className="paid__title">Order #{String(lastSale.number).padStart(4, '0')} paid</span>
+            <span className="paid__label">{lastSale.change > 0 ? 'Give change' : 'No change due'}</span>
+            {lastSale.change > 0 && <strong className="paid__change">{formatMoney(lastSale.change)}</strong>}
+            <span className="paid__detail">
+              Total {formatAmount(lastSale.total)} · Given {formatAmount(lastSale.tendered)}
+            </span>
+          </div>
+        )}
+        {empty && !lastSale && <p className="lines__empty">No items yet</p>}
         {cart.lines.map((l) => (
           <div key={l.key} className="line">
             <div className="line__info">

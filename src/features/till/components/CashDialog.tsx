@@ -11,7 +11,7 @@ interface Props {
 const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', '⌫']
 
 // Quick buttons: exact amount, the next whole rial, then any note that covers
-// the total. Covers almost every real payment in one tap.
+// the total. One tap on these completes the sale; the keypad is for odd amounts.
 function quickAmounts(total: Minor): Minor[] {
   const nextWhole = Math.ceil(total / 1000) * 1000
   const options = [total, nextWhole, ...CASH_NOTES.filter((n) => n >= total)]
@@ -20,8 +20,6 @@ function quickAmounts(total: Minor): Minor[] {
 
 export function CashDialog({ total, onConfirm, onCancel }: Props) {
   const [entry, setEntry] = useState('')
-  // After a quick button, the next keypad press starts a new amount.
-  const [fromQuick, setFromQuick] = useState(false)
   const tendered = entry === '' ? null : parseAmount(entry)
   const enough = tendered !== null && tendered >= total
   const change = enough ? tendered - total : 0
@@ -33,10 +31,8 @@ export function CashDialog({ total, onConfirm, onCancel }: Props) {
   }, [onCancel])
 
   const press = (key: string) => {
-    const base = fromQuick ? '' : entry
-    setFromQuick(false)
-    if (key === '⌫') return setEntry(base.slice(0, -1))
-    const next = base + key
+    if (key === '⌫') return setEntry((e) => e.slice(0, -1))
+    const next = entry + key
     // Only accept input that is still a valid amount (max 3 decimals, one dot).
     if (/^\d{0,6}(\.\d{0,3})?$/.test(next)) setEntry(next)
   }
@@ -73,15 +69,10 @@ export function CashDialog({ total, onConfirm, onCancel }: Props) {
             </strong>
           </div>
 
+          <p className="cash__hint">Tap what the customer gave</p>
           <div className="cash__quick">
             {quickAmounts(total).map((amount) => (
-              <button
-                key={amount}
-                onClick={() => {
-                  setEntry(formatAmount(amount))
-                  setFromQuick(true)
-                }}
-              >
+              <button key={amount} onClick={() => onConfirm(amount)}>
                 {amount === total ? 'Exact' : formatAmount(amount)}
               </button>
             ))}

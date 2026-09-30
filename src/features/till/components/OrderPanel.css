@@ -64,3 +64,20 @@
 .pay__card { border: none; background: var(--accent); color: #fff; }
 
 .order__clear { width: 100%; height: var(--tap); border: none; background: transparent; color: var(--accent); font-weight: 500; }
+
+.paid {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--ok-bg);
+  color: var(--ok-fg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.paid__title { font-size: 14px; font-weight: 600; opacity: 0.85; }
+.paid__label { font-size: 18px; font-weight: 700; }
+.paid__change { font-size: 44px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.paid__detail { font-size: 14px; opacity: 0.85; font-variant-numeric: tabular-nums; }

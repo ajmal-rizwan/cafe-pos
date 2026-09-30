@@ -37,7 +37,8 @@
 .cash__change strong { font-size: 34px; font-variant-numeric: tabular-nums; }
 .cash__change--due { background: var(--accent-soft); color: var(--accent-strong); }
 
-.cash__quick { margin-top: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+.cash__hint { margin: auto 0 0; font-size: 14px; color: var(--muted); }
+.cash__quick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
 .cash__quick button {
   height: 56px;
   border-radius: var(--radius-md);
